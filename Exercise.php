@@ -5,10 +5,6 @@ class Exercise{
     private $link;
     private $img;
     private $description;
-
-
-
-
     
 }
 ?>
