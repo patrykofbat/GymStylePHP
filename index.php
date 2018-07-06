@@ -12,7 +12,10 @@ $myArray = [
 
 ];
 
+
 $ar = array($myArray);
 echo json_encode($ar);
+
+
 
 ?>
