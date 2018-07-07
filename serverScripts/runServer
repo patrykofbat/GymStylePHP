@@ -1,0 +1,4 @@
+#!/bin/zsh
+systemctl start apache2.service
+systemctl status apache2.service
+service mysql status
