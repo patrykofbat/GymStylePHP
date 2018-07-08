@@ -1,10 +1,12 @@
 <?php
-include("databaseManagement/Importer.php");
-include("Exercise.php");
+include("utilis/Importer.php");
+include("models/Exercise.php");
+include("databaseManagement/DatabaseManager.php");
 $importer = new Importer();
 $exercise = new Exercise(100, "klata", "youtube", "link", "none");
+$dbManager = new DatabaseManager();
 $ar = $importer->fromFile("assets/klatka", [1,2,3]);
-echo $exercise->insertDb("exercises");
+$dbManager->execute($exercise->parseInsertQuery("exercises"));
 
 
 ?>

@@ -14,9 +14,9 @@ class Exercise{
         $this->description = $description;
     }
 
-    public function insertDb($tableName){
+    public function parseInsertQuery($tableName){
         return "INSERT INTO {$tableName} (id, title, link, img)
-            VALUES ({$this->ID}, {$this->title}, {$this->link}, {$this->img})";
+            VALUES ({$this->ID}, '{$this->title}', '{$this->link}', '{$this->img}')";
 
     }
     
