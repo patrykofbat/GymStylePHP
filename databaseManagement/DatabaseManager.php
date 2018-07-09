@@ -6,6 +6,14 @@ class DatabaseManager{
     private $dbPass = 'patryk';
     private $dbConn;
 
+    public function __construct(){
+        $this->establishConn();
+    }
+
+    public function __destruct(){
+        $this->dbConn->close();
+    }
+
     private function establishConn(){
         $this->dbConn = new mysqli($this->dbHost, $this->dbUser, $this->dbPass, "GymStyle");
         if( $this->dbConn->connect_error) {
@@ -15,7 +23,6 @@ class DatabaseManager{
     }
 
     public function execute($sql){
-        $this->establishConn();
         if($this->dbConn->query($sql)){
             echo 'Query executed successfully';
         }
