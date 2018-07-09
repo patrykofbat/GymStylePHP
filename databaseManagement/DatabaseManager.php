@@ -1,7 +1,7 @@
 <?php
 class DatabaseManager{
 
-    private $dbHost = 'localhost:3306';
+    private $dbHost = 'localhost:3306/GymStyle?useUnicode=true&characterEncoding=UTF-8';
     private $dbUser = 'patryk';
     private $dbPass = 'patryk';
     private $dbConn;
@@ -19,7 +19,7 @@ class DatabaseManager{
         if( $this->dbConn->connect_error) {
             die('Could not connect: ' . $dbConn->connect_error );
         }
-        echo 'Connected successfully';
+        #echo ('Connected successfully');
     }
 
     public function execute($sql){
@@ -30,6 +30,17 @@ class DatabaseManager{
             echo 'Failed to execute query '.'('.$this->dbConn->errno.')';
             echo $sql;
         }
+    }
+
+    public function select(){
+        $ar = array();
+        $result = $this->dbConn->query('SELECT * FROM exercises');
+        while($row = $result->fetch_assoc()){
+            array_push($ar, $row);
+        }
+        $result->free();
+        return $ar;
+        
     }
 
 
