@@ -7,7 +7,8 @@ include('databaseManagement/DatabaseManager.php');
 
 $dbMan = new DatabaseManager();
 
-$result = $dbMan->select();
+
+$result = $dbMan->selectByPoolId(2000, 2009);
 
 echo json_encode($result);
 
