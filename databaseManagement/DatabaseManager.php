@@ -43,21 +43,26 @@ class DatabaseManager{
         
     }
 
-    public function selectByPoolId($idStart, $idEnd){
-        $ar = array();
-        $sql = 'SELECT * FROM exercises WHERE id IN (';
-        for($i = $idStart; $i<=$idEnd; $i++){
-            $sql.=$i.',';
+    public function selectById($id){
+        $table;
+        switch($id){
+            case 1000:
+                $table = 'chest';
+                break;
+            case 2000;
+                $table = 'back';
+                break;
+            case 3000;
+                $table = 'legs';
+                break;
         }
-        $sql = substr($sql, 0, -1);
-        $sql.=')';
-        $result = $this->dbConn->query($sql);
+        $ar = array();
+        $result = $this->dbConn->query("SELECT * FROM {$table}");
         while($row = $result->fetch_assoc()){
             array_push($ar, $row);
         }
         $result->free();
         return $ar;
-        
     }
 
 
