@@ -44,6 +44,7 @@ class DatabaseManager{
     }
 
     public function selectById($id){
+        $table = null;
         switch($id){
             case 1000:
                 $table = 'chest';
@@ -62,7 +63,7 @@ class DatabaseManager{
             array_push($ar, $row);
         }
         $result->free();
-        return $sql;
+        return $ar;
     }
 
 

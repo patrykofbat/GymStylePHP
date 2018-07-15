@@ -9,8 +9,12 @@ $decodedRequest = json_decode($rawRequest);
 $id = $decodedRequest->selectedOption;
 
 $dbMan = new DatabaseManager();
+$result;
 
-$result = $dbMan->selectById($id);
+if(isset($id)){
+    $result = $dbMan->selectById($id);
+}
+
 
 echo json_encode($result);
 ?>
