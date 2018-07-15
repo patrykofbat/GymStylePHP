@@ -44,7 +44,6 @@ class DatabaseManager{
     }
 
     public function selectById($id){
-        $table;
         switch($id){
             case 1000:
                 $table = 'chest';
@@ -57,12 +56,13 @@ class DatabaseManager{
                 break;
         }
         $ar = array();
-        $result = $this->dbConn->query("SELECT * FROM {$table}");
+        $sql = 'SELECT * FROM '.$table;
+        $result = $this->dbConn->query($sql);
         while($row = $result->fetch_assoc()){
             array_push($ar, $row);
         }
         $result->free();
-        return $ar;
+        return $sql;
     }
 
 

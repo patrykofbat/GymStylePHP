@@ -1,17 +1,16 @@
 <?php
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: *");
-header('Content-Type: application/json');
 
 include('databaseManagement/DatabaseManager.php');
 
-$rawRequest = file_get_contents("php://input");
+$rawRequest = trim(file_get_contents("php://input"));
 $decodedRequest = json_decode($rawRequest);
+$id = $decodedRequest->selectedOption;
 
 $dbMan = new DatabaseManager();
-$result = $dbMan->selectById($decodedRequest->{'selectedOption'});
+
+$result = $dbMan->selectById($id);
 
 echo json_encode($result);
-
-
 ?>
