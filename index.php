@@ -14,5 +14,5 @@ if(isset($id)){
     $result = $dbMan->selectById($id);
 }
 
-echo json_encode($result);
+echo json_encode($result, JSON_NUMERIC_CHECK);
 ?>
